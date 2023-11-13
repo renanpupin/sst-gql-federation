@@ -5,11 +5,15 @@ export function GatewayAPI({ stack }: StackContext) {
   const gqlStackInfo = use(GraphAPI)
 
   const api = new Api(stack, "gateway-api", {
+    cors: true,
     defaults: {
       function: {
         environment: {
           GRAPH_URL: gqlStackInfo.api.url
-        }
+        },
+        nodejs: {
+          format: "cjs"
+        },
       }
     },
     routes: {

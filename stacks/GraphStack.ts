@@ -2,6 +2,7 @@ import { StackContext, Api, EventBus } from "sst/constructs";
 
 export function GraphAPI({ stack }: StackContext) {
   const api = new Api(stack, "graph-api", {
+    cors: true,
     routes: {
       'GET /': {
         type: 'graphql',
