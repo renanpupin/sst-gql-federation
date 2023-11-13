@@ -1,14 +1,15 @@
 import { SSTConfig } from "sst";
-import { API } from "./stacks/MyStack";
+import { GatewayAPI } from "./stacks/GatewayStack";
+import { GraphAPI } from "./stacks/GraphStack";
 
 export default {
   config(_input) {
     return {
       name: "gql-federation",
-      region: "us-east-1",
+      region: "sa-east-1",
     };
   },
   stacks(app) {
-    app.stack(API);
+    app.stack(GraphAPI).stack(GatewayAPI);
   }
 } satisfies SSTConfig;
