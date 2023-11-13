@@ -10,7 +10,7 @@ const typeDefs = gql`
         hello: String
     }
     type Mutation {
-        test: String
+        test(arg: String!): String
     }
 `
 const resolvers = {
@@ -18,7 +18,9 @@ const resolvers = {
         hello: () => 'query test',
     },
     Mutation: {
-        test: () => 'mutation test',
+        test: (arg: string) => {
+            return `mutation test ${arg}`
+        }
     }
 }
 
